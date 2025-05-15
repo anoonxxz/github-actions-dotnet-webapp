@@ -1,27 +1,20 @@
-name: teste
+name: Executar push e a cada hora
 
 on:
    push:
-     branches:
-       [main]
-    workflow_dispatch:
+   schedule:
+      - cron: '0 * * * *'
+
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Ola mundo 1"
-  job2:
-     runs-on: ubuntu-latest
-     need: job1
-    steps:
-      - run: echo "Ola mundo 2" 
-  job3:
-     runs-on: ubuntu-latest
-     need: job2
-    steps:
-      - run: echo "Ola mundo 3" 
-  job4:
-     runs-on: ubuntu-latest
-     need: job1
-    steps:
-      - run: echo "Ola mundo 4" 
+   build:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout do código
+           uses: actions/checkout@v3
+
+         - name: Rodar script ou comando
+           run: echo "Executando o workflow"  
+        
+         - name: Restaurar dependências
+            run: dotnet restore github4women/github4women.csproj
+

@@ -1,0 +1,27 @@
+name: teste
+
+on:
+   push:
+     branches:
+       - feature/experimentgodoy
+    workflow_dispatch:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Ola mundo 1"
+  job2:
+     runs-on: ubuntu-latest
+     need: job1
+    steps:
+      - run: echo "Ola mundo 2" 
+  job3:
+     runs-on: ubuntu-latest
+     need: job2
+    steps:
+      - run: echo "Ola mundo 3" 
+  job4:
+     runs-on: ubuntu-latest
+     need: job1
+    steps:
+      - run: echo "Ola mundo 4" 

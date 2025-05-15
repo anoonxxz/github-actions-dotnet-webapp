@@ -3,7 +3,7 @@ name: teste
 on:
    push:
      branches:
-       - feature/experimentgodoy
+       [main]
     workflow_dispatch:
 jobs:
   job1:

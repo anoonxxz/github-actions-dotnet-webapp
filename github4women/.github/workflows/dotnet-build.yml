@@ -3,17 +3,19 @@ name: Executar push e a cada hora
 on:
   push:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *'  # A cada hora cheia
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Rodar script ou comando
-        run: echo "Executando o workflow"
+      - name: Rodar script personalizado
+        run: echo "Olá! Esse workflow foi executado com sucesso."
 
       - name: Restaurar dependências
         run: dotnet restore github4women/github4women.csproj
